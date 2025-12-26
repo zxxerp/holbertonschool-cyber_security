@@ -1,2 +1,2 @@
 #!/bin/bash
-whois -rat
+sudo whois -rat
