@@ -1,2 +1,2 @@
 #!/bin/bash
-nslookup -type=all $!
+dig "$1" ANY
