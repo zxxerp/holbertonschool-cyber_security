@@ -1,0 +1,74 @@
+Web Application Security Incident Report
+1. Introduction
+
+This report analyzes a web application security incident involving malicious traffic targeting vulnerable endpoints of the system. The attack resulted in abnormal server behavior and exposed weaknesses in input handling and access control.
+
+The purpose of this report is to document the attack, evaluate its impact, and propose a mitigation strategy to prevent similar incidents in the future.
+
+2. Detailed Attack Analysis
+
+During log analysis, multiple suspicious requests were identified targeting sensitive application endpoints.
+
+Key observations:
+
+Source of attack: Single and multiple external IP addresses (potentially automated tools or botnets)
+Targeted endpoints: Web application input parameters and sensitive file access paths (e.g., LFI-prone endpoints)
+Request pattern: High-frequency repetitive requests with payload variations
+Possible tools used: Automated scanners such as Burp Suite, Nikto, or custom scripts
+
+Attack behavior:
+
+Attempted exploitation of input validation weaknesses
+Probing for file inclusion vulnerabilities
+High volume of requests indicating brute-force or scanning activity
+
+Impact:
+
+Risk of unauthorized data access
+Server resource consumption increase
+Exposure of potential vulnerabilities for future exploitation
+3. Proposed Mitigation Strategy
+
+To mitigate and prevent future attacks, a layered security approach should be implemented.
+
+Key mitigation measures:
+
+Deployment of a Web Application Firewall (WAF) to filter malicious requests
+Implementation of strict input validation and sanitization
+Enforcement of rate limiting to restrict excessive requests (this is the key limitation of server usage)
+Disabling or restricting vulnerable functions (e.g., file inclusion mechanisms)
+Strengthening authentication and access control mechanisms
+4. Justification for the Proposed Solution
+
+The proposed solution follows industry-standard defense-in-depth principles.
+
+A WAF provides real-time filtering of malicious traffic
+Input validation prevents exploitation of injection-based vulnerabilities
+Rate limiting reduces server overload and blocks brute-force behavior
+Combined controls reduce both attack surface and system exposure
+
+This multi-layered approach is more effective than relying on a single security mechanism.
+
+5. Steps for Implementation
+Install and configure a Web Application Firewall (e.g., Cloudflare, ModSecurity)
+Define filtering rules for known attack patterns (SQLi, LFI, XSS)
+Implement input validation on both client and server side
+Enable rate limiting per IP address and endpoint
+Restrict access to sensitive files and directories
+Update and patch all application dependencies
+Conduct security testing after implementation
+6. Post-Implementation Monitoring
+
+To ensure ongoing protection:
+
+Continuously monitor server and WAF logs
+Use Intrusion Detection Systems (IDS) for anomaly detection
+Set automated alerts for unusual traffic spikes
+Perform regular vulnerability scans
+Conduct periodic penetration testing
+Review firewall and WAF rules regularly
+7. Conclusion
+
+The analyzed incident demonstrates the importance of proactive web application security. The attack exploited weaknesses in input handling and exposed the need for stronger protective mechanisms.
+
+Implementing a Web Application Firewall, rate limiting, and proper input validation significantly reduces the risk of future incidents. Continuous monitoring ensures long-term system resilience and security.
