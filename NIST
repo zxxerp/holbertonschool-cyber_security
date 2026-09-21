@@ -1,0 +1,567 @@
+Incident Response Plan
+
+NIST SP 800-61 Aligned Security Incident Response
+
+1. Background
+
+The organization has detected unusual activity that may indicate a security breach involving unauthorized access to sensitive data. The activity may involve compromised user credentials, unauthorized access to internal systems, suspicious network connections, or possible data exfiltration.
+
+Because sensitive information may have been accessed without authorization, the incident must be investigated and managed in a structured manner. A well-defined incident response process helps the organization reduce damage, preserve evidence, restore affected services, and prevent similar incidents in the future.
+
+This incident response plan is based primarily on the incident handling lifecycle described in NIST SP 800-61 Rev. 2, Computer Security Incident Handling Guide. NIST SP 800-61 Rev. 2 describes incident handling from preparation through detection and analysis, containment, eradication and recovery, and post-incident activity. (NIST Computer Security Resource Center)
+
+NIST has since published SP 800-61 Rev. 3 in 2025, which updates incident response guidance in the context of the NIST Cybersecurity Framework 2.0. This plan uses the Rev. 2 lifecycle because it is the framework specified by this assignment, while recognizing the newer NIST guidance. (NIST)
+
+Purpose
+
+The purpose of this plan is to provide a structured process for responding to the suspected security breach. The plan is designed to:
+
+* Detect and analyze the incident quickly.
+* Limit unauthorized access and prevent further damage.
+* Protect sensitive information.
+* Preserve relevant evidence.
+* Remove the cause of the compromise.
+* Restore affected systems safely.
+* Document the incident and response activities.
+* Identify lessons learned and improve future security.
+
+Scope
+
+This plan applies to:
+
+* Company information systems and networks.
+* Servers, workstations, and endpoints.
+* Cloud services and applications.
+* Databases containing sensitive information.
+* Network infrastructure.
+* Employees, administrators, and incident response personnel.
+* Third-party services when they are involved in the incident.
+
+Sensitive information used in examples or documentation should be anonymized or obfuscated before being included in reports, screenshots, or training materials.
+
+⸻
+
+2. Incident Response Process
+
+The incident response lifecycle follows four major phases from NIST SP 800-61 Rev. 2:
+
+1. Preparation
+2. Detection and Analysis
+3. Containment, Eradication, and Recovery
+4. Post-Incident Activity
+
+These phases form a continuous process. During a real incident, responders may move between phases as new evidence becomes available. NIST emphasizes that incident handling requires preparation, detection and analysis, mitigation, recovery, and lessons learned. (NIST Computer Security Resource Center)
+
+⸻
+
+Phase 1: Preparation
+
+Preparation takes place before an incident occurs. The goal is to ensure that the organization has the people, processes, technologies, and information required to respond effectively.
+
+Recommended Actions
+
+The organization should:
+
+* Create and maintain an incident response policy.
+* Establish an incident response team.
+* Define roles and responsibilities.
+* Maintain an inventory of important systems and assets.
+* Identify sensitive data and critical services.
+* Establish secure logging and monitoring.
+* Configure centralized log collection where appropriate.
+* Maintain reliable backups.
+* Ensure security tools are available and properly configured.
+* Establish communication channels for emergencies.
+* Prepare contact information for internal and external stakeholders.
+* Conduct regular incident response exercises.
+* Provide security awareness and technical training.
+
+Examples of useful security capabilities include:
+
+* SIEM for centralized security monitoring.
+* EDR for endpoint investigation and response.
+* Firewalls and network monitoring.
+* Vulnerability scanners.
+* Authentication and access-control systems.
+* Secure backup systems.
+* Forensic and evidence collection tools.
+
+Preparation should also include procedures for preserving evidence. Investigators should avoid unnecessary changes to compromised systems and should document important actions taken during the investigation.
+
+⸻
+
+Phase 2: Detection and Analysis
+
+The second phase begins when suspicious activity is detected. The main objectives are to determine whether a security incident has occurred, understand its scope, and establish its potential impact.
+
+In this scenario, unusual activity involving sensitive data should initially be treated as a potential security incident until sufficient evidence is collected.
+
+Initial Detection
+
+Possible indicators include:
+
+* Unusual login attempts.
+* Login activity from unexpected locations.
+* Multiple failed authentication attempts.
+* Unexpected privilege changes.
+* Access to sensitive files outside normal business activity.
+* Unusual network connections.
+* Unexpected processes running on systems.
+* Large or unusual data transfers.
+* Alerts from SIEM, IDS/IPS, EDR, or other security tools.
+
+Initial Analysis
+
+The incident response team should:
+
+1. Create an incident record.
+2. Record the date and time of detection.
+3. Identify the affected systems and accounts.
+4. Determine what suspicious activity occurred.
+5. Review authentication and access logs.
+6. Analyze network traffic where available.
+7. Identify potentially compromised credentials.
+8. Determine whether sensitive data was accessed.
+9. Determine whether data may have been copied or exfiltrated.
+10. Identify additional systems that may be affected.
+11. Assign an incident severity level.
+12. Preserve relevant evidence.
+
+Investigators should establish a timeline showing important events, such as:
+
+* Initial suspicious login.
+* Account privilege changes.
+* Access to sensitive files.
+* Creation of new accounts.
+* Suspicious processes.
+* Network connections.
+* Data transfers.
+* Discovery of the incident.
+
+Incident Classification
+
+The incident should be classified according to its impact and scope.
+
+For example:
+
+High severity: Evidence indicates that sensitive information was accessed or exfiltrated and the attacker may still have access.
+
+Medium severity: Unauthorized access occurred, but there is no evidence of significant data loss.
+
+Low severity: Suspicious activity was detected but investigation does not confirm unauthorized access.
+
+The classification should be reviewed as new evidence becomes available.
+
+⸻
+
+Phase 3: Containment, Eradication, and Recovery
+
+This phase contains three closely related activities.
+
+3.1 Containment
+
+The immediate goal is to stop the incident from becoming worse while preserving enough evidence for investigation.
+
+Possible containment actions include:
+
+* Disable compromised user accounts.
+* Reset compromised credentials.
+* Revoke active sessions and authentication tokens.
+* Isolate compromised endpoints from the network.
+* Block malicious IP addresses or domains when appropriate.
+* Restrict access to affected systems.
+* Temporarily disable compromised services.
+* Apply network segmentation.
+* Increase monitoring of affected systems.
+* Preserve forensic evidence before making destructive changes where possible.
+
+The organization should carefully consider whether shutting down or disconnecting a system will destroy valuable evidence. NIST notes that containment requires decisions such as whether to shut down a system, disconnect it from a network, or disable certain functions. (NIST Computer Security Resource Center)
+
+Immediate Containment Priority
+
+For this scenario, the initial priorities should be:
+
+1. Protect sensitive data from further unauthorized access.
+2. Identify and disable compromised accounts.
+3. Isolate confirmed compromised systems.
+4. Preserve relevant logs and forensic evidence.
+5. Determine whether the attacker still has access.
+6. Prevent additional systems from becoming compromised.
+
+⸻
+
+3.2 Eradication
+
+After containment, the organization should remove the underlying cause of the incident.
+
+Actions may include:
+
+* Removing malware or unauthorized software.
+* Deleting unauthorized accounts.
+* Removing persistence mechanisms.
+* Closing exploited vulnerabilities.
+* Patching affected systems.
+* Replacing compromised credentials.
+* Rotating exposed secrets and keys.
+* Correcting incorrect permissions.
+* Removing unauthorized configuration changes.
+* Rebuilding compromised systems when necessary.
+
+If there is uncertainty about whether a compromised system has been completely cleaned, rebuilding the system from a trusted source may be safer than simply deleting suspicious files.
+
+⸻
+
+3.3 Recovery
+
+Recovery restores systems and services to normal operation while ensuring that the original compromise has been addressed.
+
+Recovery activities include:
+
+* Restoring systems from trusted backups when necessary.
+* Verifying the integrity of restored systems.
+* Applying security patches.
+* Reconfiguring access controls.
+* Restoring services in a controlled sequence.
+* Monitoring systems closely after restoration.
+* Confirming that malicious activity has stopped.
+* Verifying that sensitive data has not been further exposed.
+* Communicating the recovery status to relevant stakeholders.
+
+Before returning systems to normal operation, the incident response team should verify that security controls are functioning correctly.
+
+Recovery should also include additional monitoring because attackers may attempt to regain access after the initial compromise.
+
+⸻
+
+Phase 4: Post-Incident Activity
+
+After the incident has been contained, eradicated, and recovered from, the organization should conduct a formal post-incident review.
+
+The purpose is not only to document what happened but also to identify improvements that can prevent similar incidents.
+
+NIST emphasizes the importance of lessons learned and using incident experience to improve future incident response capabilities. (NIST)
+
+Post-Incident Review
+
+The incident response team should organize a review involving relevant technical and management personnel.
+
+The review should answer questions such as:
+
+What happened?
+
+* How was the incident detected?
+* What was the initial attack vector?
+* Which systems were affected?
+* Which accounts were compromised?
+* What information was accessed?
+* Was information exfiltrated?
+
+When did it happen?
+
+Create a detailed timeline from the first suspicious activity through detection, containment, eradication, and recovery.
+
+How did the organization respond?
+
+Evaluate:
+
+* Detection speed.
+* Communication.
+* Containment decisions.
+* Evidence preservation.
+* Technical response.
+* Recovery procedures.
+* Coordination between teams.
+
+What could be improved?
+
+Identify weaknesses such as:
+
+* Missing security controls.
+* Insufficient logging.
+* Weak authentication.
+* Excessive privileges.
+* Delayed detection.
+* Poor communication.
+* Incomplete documentation.
+* Outdated procedures.
+* Insufficient employee training.
+
+⸻
+
+Lessons Learned and Continuous Improvement
+
+The findings from the review should be converted into specific improvement actions.
+
+For example:
+
+Finding	Improvement
+Compromised password	Require stronger authentication and MFA
+Insufficient logging	Expand centralized security logging
+Delayed detection	Improve SIEM/EDR alerting
+Excessive privileges	Implement least-privilege access
+Unpatched vulnerability	Improve vulnerability and patch management
+Poor incident communication	Update communication procedures
+Employees unaware of phishing	Conduct additional security awareness training
+Recovery was slow	Improve backup and disaster recovery procedures
+
+Each improvement should have:
+
+* A responsible owner.
+* A deadline.
+* A priority.
+* A measurable completion requirement.
+
+Updated procedures should then be tested through tabletop exercises, simulations, or technical exercises.
+
+The organization should also update:
+
+* Incident response policies.
+* Incident response procedures.
+* Access control policies.
+* Security monitoring procedures.
+* Backup and recovery procedures.
+* Employee security training.
+* Technical security controls.
+
+⸻
+
+3. Team Roles and Responsibilities
+
+A successful incident response process requires clearly defined responsibilities. Team members should know who has authority to make decisions and who is responsible for technical investigation, communication, and recovery.
+
+Incident Commander
+
+The Incident Commander coordinates the overall response.
+
+Responsibilities:
+
+* Declare and classify the incident.
+* Establish response priorities.
+* Coordinate the incident response team.
+* Make or approve major containment decisions.
+* Coordinate with senior management.
+* Track the overall incident status.
+* Approve transition between response phases.
+* Ensure that decisions are documented.
+
+The Incident Commander does not necessarily perform the technical investigation. Their primary responsibility is coordination and decision-making.
+
+⸻
+
+Communications Lead
+
+The Communications Lead manages internal and external communications.
+
+Responsibilities:
+
+* Maintain communication with management.
+* Provide approved incident updates.
+* Coordinate notifications to affected stakeholders.
+* Maintain communication records.
+* Ensure sensitive information is not unnecessarily disclosed.
+* Coordinate with legal, public relations, or regulatory teams when required.
+
+Only authorized personnel should communicate externally about the incident.
+
+⸻
+
+Technical Specialist / Security Analyst
+
+The Technical Specialist performs the technical investigation.
+
+Responsibilities:
+
+* Analyze logs.
+* Investigate affected endpoints.
+* Analyze network activity.
+* Identify indicators of compromise.
+* Determine affected systems.
+* Collect and preserve technical evidence.
+* Identify the attack vector.
+* Support containment and eradication.
+* Verify systems after recovery.
+
+⸻
+
+System and Network Administrators
+
+System and Network Administrators support containment, remediation, and recovery.
+
+Responsibilities:
+
+* Isolate affected systems.
+* Disable accounts when authorized.
+* Apply patches.
+* Modify firewall or network rules.
+* Restore systems.
+* Verify system configurations.
+* Assist with backup restoration.
+
+⸻
+
+Legal / Compliance Representative
+
+The Legal or Compliance Representative determines applicable legal, contractual, and regulatory requirements.
+
+Responsibilities:
+
+* Review notification requirements.
+* Advise on evidence handling.
+* Coordinate with legal counsel where necessary.
+* Assess contractual obligations.
+* Support communication with regulators or law enforcement when required.
+
+⸻
+
+Management / Business Owner
+
+Management provides business-level decisions and resources.
+
+Responsibilities:
+
+* Approve major business decisions.
+* Allocate resources.
+* Determine acceptable business disruption.
+* Support communication with important stakeholders.
+* Approve long-term security improvements.
+
+⸻
+
+Responsibility During Each Phase
+
+Phase	Incident Commander	Communications Lead	Technical Team	Management / Legal
+Preparation	Establish response structure	Prepare communication procedures	Prepare tools and monitoring	Approve policies and resources
+Detection & Analysis	Coordinate investigation	Provide controlled updates	Investigate evidence and scope	Support classification and legal assessment
+Containment	Approve major actions	Communicate decisions	Isolate systems and accounts	Approve business-impact decisions
+Eradication	Coordinate remediation	Report progress	Remove attacker access and vulnerabilities	Support legal/compliance requirements
+Recovery	Approve return to normal operations	Communicate recovery	Restore and monitor systems	Approve business recovery
+Post-Incident	Lead review	Document communication issues	Analyze technical findings	Review policy and compliance improvements
+
+Responsibilities can be transferred if a team member becomes unavailable. The person taking over should receive a documented status summary, current incident timeline, outstanding tasks, evidence location, and current decisions.
+
+⸻
+
+4. Post-Incident Analysis and Lessons Learned
+
+A formal post-incident analysis should be completed after the incident has been resolved.
+
+The review should be conducted as soon as practical while information is still available to the response team.
+
+Incident Report
+
+The final report should contain:
+
+1. Incident identification number.
+2. Date and time of detection.
+3. Date and time of resolution.
+4. Incident classification.
+5. Affected systems.
+6. Affected accounts.
+7. Type of sensitive data involved.
+8. Initial attack vector.
+9. Timeline of events.
+10. Evidence collected.
+11. Containment actions.
+12. Eradication actions.
+13. Recovery actions.
+14. Business impact.
+15. Communication actions.
+16. Root cause or contributing factors.
+17. Lessons learned.
+18. Recommended improvements.
+
+Sensitive information should be anonymized in educational or publicly shared versions of the report.
+
+For example, instead of:
+
+Employee: john.smith@company.com
+IP: 192.168.1.25
+
+use:
+
+Employee: USER-001
+IP: 192.168.x.x
+
+⸻
+
+Root Cause Analysis
+
+The team should identify both the immediate cause and the underlying weaknesses.
+
+For example:
+
+Immediate cause:
+An attacker obtained a user’s password through a phishing attack.
+
+Underlying weaknesses:
+
+* MFA was not enabled.
+* The account had excessive privileges.
+* Security monitoring did not detect the unusual login quickly.
+* Employees had insufficient phishing awareness training.
+
+This approach prevents the organization from focusing only on the attacker’s immediate action and helps identify systemic weaknesses.
+
+⸻
+
+Incorporating Lessons Learned
+
+The organization should create an improvement plan based on the findings.
+
+The process should be:
+
+Incident → Investigation → Lessons Learned → Improvement Plan → Implementation → Testing → Updated Procedures
+
+For example:
+
+1. Identify that stolen credentials were used.
+2. Determine that MFA was not enabled.
+3. Implement MFA.
+4. Update the authentication policy.
+5. Train employees.
+6. Test the new controls.
+7. Update the incident response procedure.
+
+This creates continuous improvement rather than treating each incident as an isolated event.
+
+⸻
+
+5. Conclusion
+
+A structured incident response plan allows an organization to respond to security incidents in a controlled and consistent manner. The NIST SP 800-61 approach provides a practical lifecycle covering preparation, detection and analysis, containment, eradication and recovery, and post-incident activity. (NIST Computer Security Resource Center)
+
+For the suspected unauthorized access to sensitive data, the organization should first determine the scope of the incident, protect sensitive information, contain compromised systems and accounts, preserve evidence, remove the attacker’s access, and safely restore affected services.
+
+However, incident response should not end when the immediate threat has been removed. A formal post-incident review should identify weaknesses and convert them into improvements to security controls, policies, procedures, and employee training.
+
+Regular testing is also essential. Tabletop exercises, simulations, and technical exercises help verify that personnel understand their responsibilities and that response procedures work as intended.
+
+Finally, organizations should periodically review their incident response plans because threats, technologies, and organizational environments change over time. The newer NIST SP 800-61 Rev. 3 connects incident response more directly with the NIST Cybersecurity Framework 2.0 and emphasizes continuous improvement across cybersecurity risk management. (NIST)
+
+⸻
+
+6. References
+
+1. National Institute of Standards and Technology (NIST). Computer Security Incident Handling Guide, NIST SP 800-61 Rev. 2. 2012.
+    NIST SP 800-61 Rev. 2 — Official NIST publication
+2. Cichonski, P., Millar, T., Grance, T., & Scarfone, K. Computer Security Incident Handling Guide. NIST SP 800-61 Rev. 2. National Institute of Standards and Technology, 2012. (NIST)
+3. National Institute of Standards and Technology (NIST). Incident Response Recommendations and Considerations for Cybersecurity Risk Management: A CSF 2.0 Community Profile, NIST SP 800-61 Rev. 3. 2025.
+    NIST SP 800-61 Rev. 3 — Official NIST publication
+4. National Institute of Standards and Technology (NIST). The NIST Cybersecurity Framework (CSF) 2.0. 2024. (NIST)
+    NIST Cybersecurity Framework 2.0
+5. National Institute of Standards and Technology (NIST). CSF 1.1 Five Functions. Identify, Protect, Detect, Respond, Recover. (NIST)
+
+⸻
+
+Document Sharing and Submission
+
+The completed document should be uploaded to the organization’s preferred collaborative platform, such as Google Docs or Microsoft Office 365.
+
+Before submission:
+
+* Set sharing permissions to “Anyone with the link can view” or the equivalent required by the platform.
+* Verify that the document can be opened without requesting additional access.
+* Remove passwords, usernames, IP addresses, email addresses, tokens, and other sensitive information from examples.
+* Obfuscate sensitive logs and screenshots.
+* Confirm that all references are included.
+* Copy the document’s sharing link into the project submission.
